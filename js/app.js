@@ -11,6 +11,7 @@ const tablero = (() => {
             establecerEventos();
             crearTablero();
             colocarFigurasBlancas();
+            colocarFigurasNegras();
         })
     }
 
@@ -43,6 +44,23 @@ const tablero = (() => {
         for (let i = 0; i < primeraFila.length; i++) {
             primeraFila[i].classList.add(figuras[i]+"B");
         }
+        const segundaFila = [...celdas].slice(8,16);
+        segundaFila.forEach(element => {
+            element.classList.add("pawnB");
+        });
+    }
+
+    const colocarFigurasNegras =() =>{
+        celdas = document.querySelectorAll(".celda");
+        const primeraFila = [...celdas].slice(celdas.length-8, celdas.length);
+        const figuras = ["rook", "knight", "bishop", "king", "queen", "bishop", "knight", "rook"];
+        for (let i = 0; i < primeraFila.length; i++) {
+            primeraFila[i].classList.add(figuras[i]+"N");
+        }
+        const segundaFila = [...celdas].slice(celdas.length-16,celdas.length-9);
+        segundaFila.forEach(element => {
+            element.classList.add("pawnN");
+        });
     }
     return {
         init,
