@@ -28,6 +28,7 @@ body{
 .celda{
     width: 100px;
     height: 100px;
+
 }
 
 .blanco{
@@ -42,42 +43,58 @@ body{
 
 /** Figuras **/
 
+
+
 /* Blancas */
+
 .rookB{
     background-image: url(../img/chess-pieces/blancas/rook.png);
+    background-size: cover;
 }
 .knightB{
     background-image: url(../img/chess-pieces/blancas/knight.png);
+    background-size: cover;
+    
 }
 .bishopB{
     background-image: url(../img/chess-pieces/blancas/bishop.png);
+    background-size: cover;
 }
 .kingB{
     background-image: url(../img/chess-pieces/blancas/king.png);
+    background-size: cover;
 }
 .queenB{
     background-image: url(../img/chess-pieces/blancas/queen.png);
+    background-size: cover;
 }
 .pawnB{
     background-image: url(../img/chess-pieces/blancas/pawn.png);
+    background-size: cover;
 }
 
 /* Negras */
 .rookN{
     background-image: url(../img/chess-pieces/negras/rook.png);
+    background-size: cover;
 }
 .knightN{
     background-image: url(../img/chess-pieces/negras/knight.png);
+    background-size: cover;
 }
 .bishopN{
     background-image: url(../img/chess-pieces/negras/bishop.png);
+    background-size: cover;
 }
 .kingN{
     background-image: url(../img/chess-pieces/negras/king.png);
+    background-size: cover;
 }
 .queenN{
     background-image: url(../img/chess-pieces/negras/queen.png);
+    background-size: cover;
 }
 .pawnN{
     background-image: url(../img/chess-pieces/negras/pawn.png);
+    background-size: cover;
 }

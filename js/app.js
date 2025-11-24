@@ -3,10 +3,10 @@
 
 const tablero = (() => {
 
-    let tablero, celdas,celda, pieza;
+    let tablero, celdas, celda, pieza;
 
     const init = () => {
-        document.addEventListener("DOMContentLoaded", ()=>{
+        document.addEventListener("DOMContentLoaded", () => {
             establecerObjetos();
             establecerEventos();
             crearTablero();
@@ -16,10 +16,10 @@ const tablero = (() => {
 
     const establecerObjetos = () => {
         tablero = document.querySelector("#tablero");
-        
+
     }
     const establecerEventos = () => {
-        
+
     }
 
     const crearTablero = () => {
@@ -27,21 +27,24 @@ const tablero = (() => {
         for (let i = 0; i < 8; i++) {
             toogle = !toogle;
             for (let j = 0; j < 8; j++) {
-            celda = document.createElement("div");
-            celda.classList.add("celda");
-            celda.classList.add( (toogle) ? "blanco" : "negro");
-            toogle = !toogle;
-            tablero.append(celda);
+                celda = document.createElement("div");
+                celda.classList.add("celda", "figura");
+                celda.classList.add((toogle) ? "blanco" : "negro");
+                toogle = !toogle;
+                tablero.append(celda);
             }
         }
     }
 
-    const colocarFigurasBlancas =()=>{
+    const colocarFigurasBlancas = () => {
         celdas = document.querySelectorAll(".celda");
-        const primeraFila = [...celdas].slice(0,8);
-        console.log(primeraFila);
+        const primeraFila = [...celdas].slice(0, 8);
+        const figuras = ["rook", "knight", "bishop", "king", "queen", "bishop", "knight", "rook"];
+        for (let i = 0; i < primeraFila.length; i++) {
+            primeraFila[i].classList.add(figuras[i]+"B");
+        }
     }
-    return{
+    return {
         init,
     }
 })();
