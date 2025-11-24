@@ -1,0 +1,83 @@
+body{
+    background-color: wheat;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.titulo{
+    color: white;
+    text-align: center;
+    font-size: 5em;
+}
+
+.tablero{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    width: fit-content;
+    justify-self: center;
+    border: 20px solid burlywood;
+    border-radius: 5px;
+}
+
+.figura{
+    position: relative;
+    justify-self: center;
+    align-self: center;
+}
+
+.celda{
+    width: 100px;
+    height: 100px;
+}
+
+.blanco{
+    background-color: black;
+}
+
+.negro{
+    background-color: white;
+}
+
+
+
+/** Figuras **/
+
+/* Blancas */
+.rookB{
+    background-image: url(../img/chess-pieces/blancas/rook.png);
+}
+.knightB{
+    background-image: url(../img/chess-pieces/blancas/knight.png);
+}
+.bishopB{
+    background-image: url(../img/chess-pieces/blancas/bishop.png);
+}
+.kingB{
+    background-image: url(../img/chess-pieces/blancas/king.png);
+}
+.queenB{
+    background-image: url(../img/chess-pieces/blancas/queen.png);
+}
+.pawnB{
+    background-image: url(../img/chess-pieces/blancas/pawn.png);
+}
+
+/* Negras */
+.rookN{
+    background-image: url(../img/chess-pieces/negras/rook.png);
+}
+.knightN{
+    background-image: url(../img/chess-pieces/negras/knight.png);
+}
+.bishopN{
+    background-image: url(../img/chess-pieces/negras/bishop.png);
+}
+.kingN{
+    background-image: url(../img/chess-pieces/negras/king.png);
+}
+.queenN{
+    background-image: url(../img/chess-pieces/negras/queen.png);
+}
+.pawnN{
+    background-image: url(../img/chess-pieces/negras/pawn.png);
+}
