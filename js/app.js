@@ -56,7 +56,7 @@ const tablero = (() => {
 
     const colocarFigurasNegras = () => {
         const primeraFila = [...celdas].slice(celdas.length - 8, celdas.length);
-        const figuras = ["rook", "knight", "bishop", "king", "queen", "bishop", "knight", "rook"];
+        const figuras = ["rook", "knight", "bishop", "queen", "king", "bishop", "knight", "rook"];
         for (let i = 0; i < primeraFila.length; i++) {
             primeraFila[i].classList.add(figuras[i] + "N");
         }
@@ -68,29 +68,66 @@ const tablero = (() => {
 
     const movimiento = (e) => {
         const target = e.target;
-        console.log(target);
         const posIni = [...celdas].indexOf(target);
         const estilos = [...celdas[posIni].classList];
+
         if (estilos.length > 3) {
             const color = estilos[3].slice(-1);
             const pieza = estilos[3];
 
             switch (color) {
                 case "N": {
-                    if ([...celdas[reglas.movimiento1arriba(posIni)].classList].length > 3) {
-                        console.log("No puedes, ya hay una pieza");
-                    } else {
-                        celdas[posIni].classList.toggle(pieza);
-                        celdas[reglas.movimiento1arriba(posIni)].classList.toggle(pieza);
+                    switch (pieza.slice(0,-1)) {
+                        case "pawn": {
+                            if ([...celdas[reglas.peonarriba(posIni, 1)].classList].length > 3) {
+                                console.log("No puedes, ya hay una pieza");
+                            } else {
+                                celdas[posIni].classList.toggle(pieza);
+                                celdas[reglas.peonarriba(posIni, 1)].classList.toggle(pieza);
+                            }
+                            break;
+                        }
+                        case "rook":{
+                            if ([...celdas[reglas.rookarriba(posIni, 1)].classList].length > 3) {
+                                console.log("No puedes, ya hay una pieza");
+                            } else {
+                                celdas[posIni].classList.toggle(pieza);
+                                celdas[reglas.rookarriba(posIni, 1)].classList.toggle(pieza);
+                            }
+                            break;
+                        }
+                        case "knight":{
+                            if ([...celdas[reglas.knightarribaderecha(posIni)].classList].length > 3) {
+                                console.log("No puedes, ya hay una pieza");
+                            } else {
+                                celdas[posIni].classList.toggle(pieza);
+                                celdas[reglas.knightarribaderecha(posIni)].classList.toggle(pieza);
+                            }
+                            break;
+                        }
+                        case "bishop":{
+                            if ([...celdas[reglas.bishoparribaderecha(posIni, 1)].classList].length > 3) {
+                                console.log("No puedes, ya hay una pieza");
+                            } else {
+                                celdas[posIni].classList.toggle(pieza);
+                                celdas[reglas.bishoparribaderecha(posIni, 1)].classList.toggle(pieza);
+                            }
+                            break;
+                        }
+                        default:{
+                            console.log("Nombre pieza erroneo", pieza);
+                        }
                     }
+
+
                     break;
                 }
-                case "B":{
-                    if ([...celdas[reglas.movimiento1abajo(posIni)].classList].length > 3) {
+                case "B": {
+                    if ([...celdas[reglas.peonabajo(posIni, 1)].classList].length > 3) {
                         console.log("No puedes, ya hay una pieza");
                     } else {
                         celdas[posIni].classList.toggle(pieza);
-                        celdas[reglas.movimiento1abajo(posIni)].classList.toggle(pieza);
+                        celdas[reglas.peonabajo(posIni, 1)].classList.toggle(pieza);
                     }
                     break;
                 }
@@ -100,6 +137,10 @@ const tablero = (() => {
         else {
             console.log("Selecciona uno que tenga ficha")
         }
+    }
+
+    const reglaPeon = () => {
+
     }
 
 
