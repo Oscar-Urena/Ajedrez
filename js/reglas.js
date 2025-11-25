@@ -18,7 +18,7 @@ export const peonarriba = (x, n) => {
     return movimientoarriba(x, n);
 }
 
-/* Movimiento Alfin */
+/* Movimiento torre */
 export const rookarriba = (x, n) => {
     return movimientoarriba(x, n);
 }
@@ -27,18 +27,32 @@ export const rookabajo = (x, n) => {
     return movimientoabajo(x, n);
 }
 
-/* Movimiento Caballo */
+export const rookderecha =(x, n)=>{
+    return x+n;
+}
 
+export const rookizquierda =(x, n)=>{
+    return x-n;
+}
+
+/* Movimiento Caballo */
 export const knightabajoderecha = (x) => {
     return x + 17;
+}
+
+export const knightabajoizquierda = (x) => {
+    return x + 15;
 }
 
 export const knightarribaderecha = (x) => {
     return x - 15;
 }
 
-/* Movimiento Alfin */
+export const knightarribaizquierda = (x) => {
+    return x - 17;
+}
 
+/* Movimiento Alfin */
 export const bishoparribaderecha = (x, n) => {
     return x - 7 * n;
 }
@@ -54,3 +68,6 @@ export const bishopabajoderecha = (x, n) => {
 export const bishopabajoizquierda = (x, n) => {
     return x + 9 * n;
 }
+
+/* Movimiento reina */
+

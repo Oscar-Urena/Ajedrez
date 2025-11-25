@@ -24,7 +24,7 @@ const tablero = (() => {
     }
     const establecerEventos = () => {
         celdas.forEach(element => {
-            element.addEventListener("click", movimiento);
+            element.addEventListener("click", seleccionar);
         });
     }
 
@@ -66,6 +66,88 @@ const tablero = (() => {
         });
     }
 
+    const seleccionar = (e) => {
+        const target = e.target;
+        const posIni = [...celdas].indexOf(target);
+        const estilos = [...celdas[posIni].classList];
+
+        if (estilos.length > 3) {
+            const color = estilos[3].slice(-1);
+            const pieza = estilos[3];
+
+            document.querySelectorAll(".objetivo").forEach(element => {
+                element.classList.toggle("objetivo");
+            });
+
+            switch (color) {
+                case "N": {
+                    switch (pieza.slice(0, -1)) {
+                        case "pawn": {
+                            let celdaObj = reglas.peonarriba(posIni, 1);
+                            const objetivos = [];
+                            let contador = 0;
+                            while ((celdas[celdaObj].classList.length < 4 || [...celdas[celdaObj].classList].includes("objetivo")) && contador < 2) {
+                                celdas[celdaObj].classList.add("objetivo");
+                                objetivos.push(celdaObj);
+                                contador++;
+                                celdaObj = reglas.peonarriba(celdaObj, 1);
+                            };
+                            objetivos.forEach(objetivo => {
+                                celdas[objetivo].addEventListener("click", () => {
+                                    celdas[posIni].classList.remove(pieza);
+                                    celdas[objetivo].classList.add(pieza);
+                                })
+                            });
+                            target.
+                            break;
+                        }
+                        case "rook": {
+                            let celdaObj = reglas.rookarriba(posIni, 1);
+                            const objetivos = [];
+                            while (celdas[celdaObj].classList.length < 4) {
+                                celdas[celdaObj].classList.add("objetivo");
+                                objetivos.push(celdaObj);
+                                celdaObj = reglas.rookarriba(celdaObj, 1);
+                            };
+                            console.log(objetivos);
+                            break;
+                        }
+                        case "knight": {
+                            let celdaObj = reglas.knightarribaderecha(posIni);
+                            celdas[celdaObj].classList.add("objetivo");
+                            celdaObj = reglas.knightarribaderecha(posIni);
+                            break;
+                        }
+                        case "bishop": {
+                            let celdaObj = reglas.bishoparribaderecha(posIni, 1);
+                            while (celdas[celdaObj].classList.length < 4) {
+                                celdas[celdaObj].classList.add("objetivo");
+                                celdaObj = reglas.bishoparribaderecha(celdaObj, 1);
+                            };
+                            break;
+                        }
+                        default: {
+                            console.log("Nombre pieza erroneo", pieza);
+                        }
+                    }
+
+
+                    break;
+                }
+                case "B": {
+                    if ([...celdas[reglas.peonabajo(posIni, 1)].classList].length > 3) {
+                        console.log("No puedes, ya hay una pieza");
+                    } else {
+                        celdas[posIni].classList.toggle(pieza);
+                        celdas[reglas.peonabajo(posIni, 1)].classList.toggle(pieza);
+                    }
+                    break;
+                }
+            }
+        }
+    }
+
+
     const movimiento = (e) => {
         const target = e.target;
         const posIni = [...celdas].indexOf(target);
@@ -77,7 +159,7 @@ const tablero = (() => {
 
             switch (color) {
                 case "N": {
-                    switch (pieza.slice(0,-1)) {
+                    switch (pieza.slice(0, -1)) {
                         case "pawn": {
                             if ([...celdas[reglas.peonarriba(posIni, 1)].classList].length > 3) {
                                 console.log("No puedes, ya hay una pieza");
@@ -87,7 +169,7 @@ const tablero = (() => {
                             }
                             break;
                         }
-                        case "rook":{
+                        case "rook": {
                             if ([...celdas[reglas.rookarriba(posIni, 1)].classList].length > 3) {
                                 console.log("No puedes, ya hay una pieza");
                             } else {
@@ -96,7 +178,7 @@ const tablero = (() => {
                             }
                             break;
                         }
-                        case "knight":{
+                        case "knight": {
                             if ([...celdas[reglas.knightarribaderecha(posIni)].classList].length > 3) {
                                 console.log("No puedes, ya hay una pieza");
                             } else {
@@ -105,7 +187,7 @@ const tablero = (() => {
                             }
                             break;
                         }
-                        case "bishop":{
+                        case "bishop": {
                             if ([...celdas[reglas.bishoparribaderecha(posIni, 1)].classList].length > 3) {
                                 console.log("No puedes, ya hay una pieza");
                             } else {
@@ -114,7 +196,7 @@ const tablero = (() => {
                             }
                             break;
                         }
-                        default:{
+                        default: {
                             console.log("Nombre pieza erroneo", pieza);
                         }
                     }
@@ -137,10 +219,6 @@ const tablero = (() => {
         else {
             console.log("Selecciona uno que tenga ficha")
         }
-    }
-
-    const reglaPeon = () => {
-
     }
 
 
