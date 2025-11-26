@@ -3,6 +3,11 @@ body{
     font-family: 'Courier New', Courier, monospace;
 }
 
+span{
+    padding: 10%;
+    align-self: flex-end;
+}
+
 .titulo{
     color: white;
     text-align: center;
@@ -20,9 +25,8 @@ body{
 }
 
 .figura{
-    position: relative;
-    justify-self: center;
-    align-self: center;
+    height: 100%;
+    width: 100%;
 }
 
 .celda{
